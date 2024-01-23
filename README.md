@@ -2,7 +2,7 @@
 
 Hashi integration of [Hyperlane ISM](https://docs.hyperlane.xyz/docs/reference/ISM/specify-your-ISM)
 
-![](./public/Hashi%20ISM.png)
+![](./public/Hashi%20ISM..png)
 
 Hyperlane Interchain Security Module (ISM) is part of the modular security provided by Hyperlane. Users can define their own ISM for their security preferences.
 
