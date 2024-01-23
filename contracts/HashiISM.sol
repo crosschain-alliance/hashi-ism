@@ -1,9 +1,10 @@
-// SPDX-License-Identifier: MIT OR Apache-2.0
-pragma solidity >=0.8.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
 import {IInterchainSecurityModule} from "@hyperlane-xyz/core/contracts/interfaces/IInterchainSecurityModule.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {Message} from "@hyperlane-xyz/core/contracts/libs/Message.sol";
+
 import {Hashi} from "./hashi/Hashi.sol";
 import {IOracleAdapter} from "./hashi/interfaces/IOracleAdapter.sol";
 import {HashiRegistry} from "./HashiRegistry.sol";

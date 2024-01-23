@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
-import {IMessageRelay} from "../hashi/interfaces/IMessageRelay.sol";
+import {IMessageRelay} from "../../hashi/interfaces/IMessageRelay.sol";
 
 contract MessageRelayMock is IMessageRelay {
     event MessageRelayed(address indexed emitter, uint256 indexed messageId);

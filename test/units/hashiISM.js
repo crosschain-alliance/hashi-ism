@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 
 const { ethers } = require("hardhat");
-const preSetup = require("../preSetup");
+const preSetup = require("../utils/preSetup");
 describe("Hashi ISM test", function () {
   let hashiISM;
   let messageAdapter = [];

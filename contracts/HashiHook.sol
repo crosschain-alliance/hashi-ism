@@ -1,10 +1,12 @@
-// SPDX-License-Identifier: MIT OR Apache-2.0
-pragma solidity >=0.8.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
 import {AbstractPostDispatchHook} from "@hyperlane-xyz/core/contracts/hooks/libs/AbstractPostDispatchHook.sol";
 import {IPostDispatchHook} from "@hyperlane-xyz/core/contracts/interfaces/hooks/IPostDispatchHook.sol";
-import {HashiRegistry} from "./HashiRegistry.sol";
 import "@hyperlane-xyz/core/contracts/libs/Message.sol" as MessageLibrary;
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+
+import {HashiRegistry} from "./HashiRegistry.sol";
 import {Yaho} from "./hashi/Yaho.sol";
 import "./hashi/interfaces/IMessage.sol" as HashiMessage;
 

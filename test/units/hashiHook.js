@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 
 const { ethers } = require("hardhat");
-const preSetup = require("../preSetup");
+const preSetup = require("../utils/preSetup");
 describe("Hashi Hook test", function () {
   let hashiHook;
   let hashiRegistry;

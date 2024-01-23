@@ -1,5 +1,4 @@
-async function preSetup() {
-  //const mailbox = "0xa3AfBdCDcE024aC985b9977e8Dd38156d1B6A43F"; // randome address
+async function wrapRouteSetup() {
   const srcDomain = "1";
   const dstDomain = "100";
 
@@ -14,10 +13,40 @@ async function preSetup() {
   let sourceAdapters = [];
   let destAdapters = [];
 
+  let erc20Mock;
+  let sourceToken;
+  let wrappedToken;
+
   let sourceMailbox;
+  let destMailbox;
+  let testInterchainGasPaymaster;
 
   const MailboxFactory = await ethers.getContractFactory("MailboxMock");
   sourceMailbox = await MailboxFactory.deploy(srcDomain);
+  destMailbox = await MailboxFactory.deploy(dstDomain);
+
+  const ERC20Factory = await ethers.getContractFactory("ERC20Mock");
+  erc20Mock = await ERC20Factory.deploy();
+
+  const sourceTokenFactory = await ethers.getContractFactory(
+    "HypERC20CollateralMock"
+  );
+
+  sourceToken = await sourceTokenFactory.deploy(
+    await erc20Mock.getAddress(),
+    await sourceMailbox.getAddress()
+  );
+
+  const wrappedTokenFactory = await ethers.getContractFactory("HypERC20Mock");
+  wrappedToken = await wrappedTokenFactory.deploy(
+    18,
+    await destMailbox.getAddress()
+  );
+
+  const testInterchainGasPaymasterFactory = await ethers.getContractFactory(
+    "TestInterchainGasPaymaster"
+  );
+  testInterchainGasPaymaster = await testInterchainGasPaymasterFactory.deploy();
 
   const HashiFactory = await ethers.getContractFactory("Hashi");
   hashi = await HashiFactory.deploy();
@@ -79,7 +108,13 @@ async function preSetup() {
     destAdapters,
     hashiHook,
     hashiISM,
+
+    erc20Mock,
+    sourceToken,
+    wrappedToken,
+    sourceMailbox,
+    destMailbox,
   };
 }
 
-module.exports = preSetup;
+module.exports = wrapRouteSetup;
